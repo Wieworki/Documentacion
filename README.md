@@ -98,4 +98,9 @@ Las prácticas de complejidad media o alta por lo general son auditables, debien
 
 ### Prestadores
 
-Los prestadores son los profesionales asociados a la obra social
+Los prestadores son los profesionales asociados a la obra social. Inicialmente, para poder hacer el vínculo con la orden médica, es necesario el número de matrícula, y el nombre de cada uno.
+
+### PMO
+
+Los planes médicos obligatorios son fijados desde nación como prácticas que la obra social está obligada a cubrir. Constan de un código identificatorio y una descripción.
+Para el uso en este módulo, se deberá especificar cuales son autorizados automáicamente, y cuál es el límite mensual y anual en estos casos.

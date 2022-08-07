@@ -35,6 +35,7 @@ Las órdenes médicas serán creadas, evaluadas, e impresas por los usuarios del
 graph LR;
     Creación-->Evaluación;
     Evaluación-->Impresión;
+    Impresión-->Venta;
 ```
 
 Una orden médica debe contar con la siguiente información:
@@ -93,7 +94,7 @@ stateDiagram
     EnEstudio --> Rechazada
 ```
 
-Las prácticas médicas se clasifican según su complejidad. Las que tienen complejidad alta, serán autorizadas automáticamente por el sistema. En estos casos, se establecen topes mensuales o anuales según el caso.
+Las prácticas médicas se clasifican según su complejidad. Las que tienen complejidad baja, serán autorizadas automáticamente por el sistema. En estos casos, se establecen topes mensuales o anuales según el caso.
 Las prácticas de complejidad media o alta por lo general son auditables, debiendo ser evaluadas por un médico auditor. El médico puede rechazar, aprobar, o pedir más información respecto a la práctica, dejándola en un estado de "En estudio". 
 
 ### Prestadores
@@ -104,3 +105,5 @@ Los prestadores son los profesionales asociados a la obra social. Inicialmente, 
 
 Los planes médicos obligatorios son fijados desde nación como prácticas que la obra social está obligada a cubrir. Constan de un código identificatorio y una descripción.
 Para el uso en este módulo, se deberá especificar cuales son autorizados automáicamente, y cuál es el límite mensual y anual en estos casos.
+
+

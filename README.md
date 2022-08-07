@@ -27,7 +27,7 @@ El médico auditor tendrá también la potestad de editar los PMO, pudiendo agre
 
 ### Ordenes médicas
 
-Las órdenes médicas serán creadas, evaluadas, e impresas por los usuarios del sistema. Estarán asociadas a una entidad llamada "beneficiario". El beneficiario puede ser el titular del plan de la obra social, o un familiar del mismo (para éste módulo, son lo mismo), y estarán cargado en el sistema. El ABM de los titulares y familiares es administrado desde otro módulo distinto a éste.
+Las órdenes médicas serán creadas, evaluadas, e impresas por los usuarios del sistema. Estarán asociadas a una entidad llamada "beneficiario". El beneficiario puede ser el titular del plan de la obra social, o un familiar del mismo (para éste módulo, son lo mismo), y estarán cargados en el sistema. El ABM de los titulares y familiares es administrado desde otro módulo distinto a éste.
 
 #### Diagrama de flujo de una orden
 

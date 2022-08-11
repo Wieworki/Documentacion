@@ -5,6 +5,7 @@ El módulo que fue encargado tiene como principal objetivo permitir administrar 
 En este documento, se tratará de forma indistinta a los términos "práctica médica" y "consulta médica". Ambos están nomenclados dentro del listado de PMO, por lo que son
 tratados de la misma manera por el sistema.
 
+
 ## Usuarios del sistema
 
 El sistema contará con dos tipos de usuarios: operadores y médicos auditores.
@@ -79,7 +80,7 @@ ser impresa solamente cuando se encuentre en estado "resuelta".
 Las prácticas médicas están nomencladas en lo que se conoce como PMO, o "Prácticas médicas obligatorias". Esta nomenclatura le asigna un código distintivo a cada
 práctica, el cual sirve para identificarlas, y organizarlas dentro de distintas categorías. Por ejemplo, todos los códigos que comienzan con "420101" corresponden a consultas médicas.
 
-Una orden médica contiene una o más prácticas médicas. Cada práctica médica se evalúa de forma individual, por lo que cada una se encontrará en un estado propio, independiente del resto de las demás prácticas, y de la misma orden. Por este motivo, cada práctica y consulta médica será tratada como un ítem de la orden.
+Una orden médica contiene una o más prácticas médicas. Cada práctica médica se evalúa de forma individual, por lo que cada una se encontrará en un estado propio, independiente del resto de las demás prácticas, y de la misma orden. Por este motivo, cada práctica y consulta médica será tratada como un ítem de la orden, y estará asociada a un PMO, con la particularidad que estando asociada a una orden, tendrá un valor de coseguro asociado.
 
 #### Diagrama de estados de una práctica
 
@@ -97,13 +98,37 @@ stateDiagram
 Las prácticas médicas se clasifican según su complejidad. Las que tienen complejidad baja, serán autorizadas automáticamente por el sistema. En estos casos, se establecen topes mensuales o anuales según el caso.
 Las prácticas de complejidad media o alta por lo general son auditables, debiendo ser evaluadas por un médico auditor. El médico puede rechazar, aprobar, o pedir más información respecto a la práctica, dejándola en un estado de "En estudio". 
 
+Entonces, los atributos con los que cuenta una práctica en este sistema son:
+
+- PMO asociado
+- Orden asociada
+- Valor del coseguro
+- Cantidad pedida
+- Estado actual de la práctica
+
 ### Prestadores
 
-Los prestadores son los profesionales asociados a la obra social. Inicialmente, para poder hacer el vínculo con la orden médica, es necesario el número de matrícula, y el nombre de cada uno.
+Los prestadores son los profesionales asociados a la obra social. Inicialmente, para poder hacer el vínculo con la orden médica, es necesario el número de matrícula, y el nombre de cada uno. 
 
 ### PMO
 
 Los planes médicos obligatorios son fijados desde nación como prácticas que la obra social está obligada a cubrir. Constan de un código identificatorio y una descripción.
-Para el uso en este módulo, se deberá especificar cuales son autorizados automáicamente, y cuál es el límite mensual y anual en estos casos.
+Para el uso en este módulo, se deberá especificar cuales son autorizados automáicamente, y cuál es el límite mensual y anual en estos casos. Además, algunas prácticas son cubiertas si el afiliado forma parte de algún Plan médico particular, como puede ser el Plan Materno Infantil (PMI), o el Plan Oncológico.
 
+Una PMO cuenta entonces con la siguiente información:
 
+- Código: es único para cada PMO
+- Descripción: detalle de la práctica a la que refiere
+- Autorización automática: bandera usada para evaluar si puede ser autorizado automáticamente, o solo puede ser autorizado tras ser evaluado por un médico auditor
+- Limite mensual: tope de autorizaciones automáticas que tiene esta práctica en un mes
+- Límite anual: tope de autorizaciones automáticas que tiene esta práctica en un año
+- Cobertura PMI: sirve como bandera para que se autorice automáticamente si forma parte de la cobertura PMI
+- Cobertura oncológica: sirve como bandera para que se autorice automáticamente si forma parte de la cobertura oncológica
+
+## BD
+
+### Modelo físico de la base de datos
+
+![imagen](https://user-images.githubusercontent.com/45775681/184210239-1933efad-9a7e-4e2e-ace6-ef0e96636b03.png)
+
+El módulo de órdenes recupera diversa información respecto del beneficiario del módulo de afiliaciones, pero la única relación directa entre tablas se da por el DNI del individuo, el cual estará asociado a la orden.

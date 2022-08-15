@@ -12,7 +12,8 @@ El sistema contará con dos tipos de usuarios: operadores y médicos auditores.
 
 #### Diagrama de casos de uso
 
-![imagen](https://user-images.githubusercontent.com/45775681/181996789-a6b6dadc-b5cb-4c6a-82e7-a19ad03fe16d.png)
+![imagen](https://user-images.githubusercontent.com/45775681/184682353-27cf2fbe-9d66-4e79-8bce-a6101cd3ee73.png)
+
 
 ### Operadores
 

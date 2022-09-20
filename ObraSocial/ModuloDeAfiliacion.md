@@ -38,20 +38,12 @@ que son comunes para estas dos entidades hijas. Cuenta con la siguiente informac
 - nombre
 - sexo
 - direccion
-- provincia
 - id_cpostal
-- dpto
-- mail
 - incapacidad
 - estado_civil
 - telefono
-- nacionalidad
 - fec_nacimiento
 - fec_alta
-- fec_baja
-- fec_afiliacion
-- fec_ingreso
-- fec_caduca
 - obs
 - estado
 
@@ -66,9 +58,17 @@ Cuenta con la siguiente información:
 - id
 - id_persona
 - id_categoria
+- provincia
+- dpto
+- mail
+- nacionalidad
 - cbu
 - aporta_sc (si paga servicios sociales)
 - nro_afiliacion
+- fec_baja
+- fec_afiliacion
+- fec_ingreso
+- fec_caduca
 - tipo_empleo
 - id_empresa
 - id_convenio

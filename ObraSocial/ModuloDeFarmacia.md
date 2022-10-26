@@ -14,7 +14,7 @@ El sistema contará con los siguientes usuarios:
 
 #### Diagrama de casos de uso
 
-![imagen](https://user-images.githubusercontent.com/45775681/198155312-db9b89f1-9437-4ed2-a627-b7e77c0a3595.png)
+![imagen](https://user-images.githubusercontent.com/45775681/198155596-7335ba07-f3d3-44e0-ae5f-7b8eedcd72af.png)
 
 ### Operador de carga
 Encargado de cargar en el sistema lo que recibe está en la orden médica recibida del afiliado. Deberá indicar toda la información pertinente para la auditoría del pedido.

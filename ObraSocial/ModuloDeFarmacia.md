@@ -14,7 +14,7 @@ El sistema contará con los siguientes usuarios:
 
 #### Diagrama de casos de uso
 
-![imagen](https://user-images.githubusercontent.com/45775681/198155596-7335ba07-f3d3-44e0-ae5f-7b8eedcd72af.png)
+![imagen](https://user-images.githubusercontent.com/45775681/199838366-ebb6d98d-c6b5-4eb2-b9d9-f1e937f318ee.png)
 
 ### Operador de carga
 Encargado de cargar en el sistema lo que recibe está en la orden médica recibida del afiliado. Deberá indicar toda la información pertinente para la auditoría del pedido.
@@ -38,11 +38,74 @@ Además, debe poder mantener actualizado el stock
 ## Entidades
 
 ### Afiliado
+Persona afiliada a la obra social. La entidad persona del modulo farmacia debe estar vinculadad directa o indirectamente con la entidad persona del modulo de afiliacion. 
+En principio, solamente es necesario contar con los siguientes campos:
+
+- ID
+- Nombre
+- Apellido
+- DNI
+- Observaciones
+
+Se debe evaluar si se puede reutilizar la tabla del módulo de afiliación, o crear una tabla específica para este módulo. La complejidad de crear otra tabla, para por el mantenimiento que se le deberá realizar desde el módulo de afiliación, ya que todos los cambios que se realicen en los afiliados deberán verse reflejados en éste módulo también.
 
 ### Pedido farmacia
+Entidad compuesta, contiene el listado de todos los medicamentos y las personas que los pidieron. Tendrá asociado un detalle. Cuenta con los siguientes atributos:
+
+- ID
+- Estado
+- Fecha_creacion
+- Fecha_recepcion
+
+#### Diagrama de flujo de un pedido
+
+
+```mermaid
+graph LR;
+    Creación-->Se_audita;
+    Creación-->Se_autoriza_autom;
+    Se_autoriza_autom-->Se_presupuesta;
+    Se_audita-->Se_presupuesta;
+    Se_presupuesta-->Se_envia;
+    Se_envia-->Se_recibe;
+```
+
+#### Diagrama de estados de un pedido
+
+```mermaid
+stateDiagram
+    direction LR
+    [*] --> Pendiente
+    Pendiente --> Auditable
+    Pendiente --> Por_Presupuestar
+    Auditable --> Por_Presupuestar
+    Por_Presupuestar --> Enviado
+    Enviado --> Recibido
+```
 
 ### Detalle pedido
+Entidad débil, contenida con por el pedido de farmacia. Contiene la información de 1 pedido de medicamento de 1 afliado. Cuenta con:
+
+- Id
+- Id_afiliado
+- Detalle
+- Id_medicamento
+- Cantidad
 
 ### Item farmacia
+Entidad central del módulo. Cuenta con:
+
+- ID
+- Principio_activo
+- Presentación
+- Marca
+- Recupero (bool)
+- Cobertura_diabetes (bool)
+- Cobertura_discapacidad (bool)
+- Cobertura_anticonceptiva (bool)
+- Cobertura_70 (bool)
+- Cobertura_oncologica (bool)
+- Tope_anual
+- Tope_mensual
 
 ## Base de Datos

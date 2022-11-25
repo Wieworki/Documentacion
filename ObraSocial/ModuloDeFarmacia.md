@@ -39,15 +39,10 @@ Además, debe poder mantener actualizado el stock
 
 ### Afiliado
 Persona afiliada a la obra social. La entidad persona del modulo farmacia debe estar vinculadad directa o indirectamente con la entidad persona del modulo de afiliacion. 
-En principio, solamente es necesario contar con los siguientes campos:
+Es recuperada del módulo de afiliación. Para este módulo es necesario recuperar los siguientes campos:
 
-- ID
-- Nombre
-- Apellido
+- Nombre y apellido
 - DNI
-- Observaciones
-
-Se debe evaluar si se puede reutilizar la tabla del módulo de afiliación, o crear una tabla específica para este módulo. La complejidad de crear otra tabla, para por el mantenimiento que se le deberá realizar desde el módulo de afiliación, ya que todos los cambios que se realicen en los afiliados deberán verse reflejados en éste módulo también.
 
 ### Pedido farmacia
 Entidad compuesta, contiene el listado de todos los medicamentos y las personas que los pidieron. Tendrá asociado un detalle. Cuenta con los siguientes atributos:
@@ -84,7 +79,7 @@ stateDiagram
 ```
 
 ### Detalle pedido
-Entidad débil, contenida con por el pedido de farmacia. Contiene la información de 1 pedido de medicamento de 1 afliado. Cuenta con:
+Contiene la información de 1 pedido de medicamento de 1 afliado. Cuenta con:
 
 - Id
 - Id_afiliado
@@ -92,20 +87,43 @@ Entidad débil, contenida con por el pedido de farmacia. Contiene la informació
 - Id_medicamento
 - Cantidad
 
-### Item farmacia
+Implica la creación de una entidad débil que la vincule con el listado de pedidos de farmacia.
+
+### Medicamento
 Entidad central del módulo. Cuenta con:
 
 - ID
-- Principio_activo
-- Presentación
 - Marca
+- Presentación
+- Laboratorio
+- Principio_activo
+- Estado
+- Cobertura_70 (bool)
 - Recupero (bool)
+
+Evaluar si los siguientes campos son necesarios:
+
 - Cobertura_diabetes (bool)
 - Cobertura_discapacidad (bool)
 - Cobertura_anticonceptiva (bool)
-- Cobertura_70 (bool)
 - Cobertura_oncologica (bool)
 - Tope_anual
 - Tope_mensual
+
+### Laboratorio
+Entidad referida a los distintos laboratorios que producen los medicamentos.
+Cuenta con:
+
+- ID
+- Nombre
+
+### Principio activo
+Materia que compone a un medicamento.
+Cuenta con:
+
+- ID
+- Nombre
+
+
 
 ## Base de Datos
